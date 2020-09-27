@@ -1,0 +1,24 @@
+<div class="container">
+    <img src="../../../assets//images/main_image.jpeg" class="m-10 main-image">
+    <mat-form-field appearance="fill" class="w-100 m-10">
+        <mat-label>Introducir email</mat-label>
+        <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            required
+        />
+        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="w-100 m-10">
+        <mat-label>Introducir password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    
+    <button mat-raised-button class="w-100 m-10">Login</button>
+</div>
+
