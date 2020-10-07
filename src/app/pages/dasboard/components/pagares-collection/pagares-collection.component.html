@@ -1,0 +1,51 @@
+<div class="mat-elevation-z8" style="margin: 20px;">
+    <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Cliente Column -->
+        <ng-container matColumnDef="cliente" style="width: 25%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+            <td mat-cell *matCellDef="let row">{{ row.cliente }}</td>
+        </ng-container>
+
+        <!-- Importe Column -->
+        <ng-container matColumnDef="importe" style="width: 15%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Importe </th>
+            <td mat-cell *matCellDef="let row">{{ row.importe }}</td>
+        </ng-container>
+
+        <!-- Vencimiento Column -->
+        <ng-container matColumnDef="vencimiento" style="width: 15%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Vencimiento </th>
+            <td mat-cell *matCellDef="let row">{{ row.vencimiento.seconds * 1000 | date: 'dd/MM/yyyy' }}</td>
+        </ng-container>
+
+        <!-- Banco Column -->
+        <ng-container matColumnDef="banco" style="width: 15%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Banco </th>
+            <td mat-cell *matCellDef="let row" >
+                {{ row.banco }}
+            </td>
+        </ng-container>
+
+        <!-- Concepto Column -->
+        <ng-container matColumnDef="concepto" style="width: 15%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Concepto </th>
+            <td mat-cell *matCellDef="let row" >
+                {{ row.concepto }}
+            </td>
+        </ng-container>
+
+        <!-- Fecha_entrega Column -->
+        <ng-container matColumnDef="fecha_entrega" style="width: 15%;">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> F. Entrega </th>
+            <td mat-cell *matCellDef="let row" >
+                {{ row.fecha_entrega.seconds * 1000 | date: 'dd/MM/yyyy' }}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="goToPagare(row)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</div>
