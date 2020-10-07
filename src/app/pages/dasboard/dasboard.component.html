@@ -1,1 +1,41 @@
-<h1>Dasboard Works!</h1>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" >
+        <h3>Filtros: </h3>
+        <mat-form-field style="width: 250px;">
+            <mat-label>Filtrado por texto</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrado por cliente">
+        </mat-form-field>
+        <h4>Importe</h4>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                    <mat-label>Desde</mat-label>
+                <input matInput type="number" (keyup)="firstApplyFilterImport($event)">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                    <mat-label>Hasta</mat-label>
+                <input matInput type="number" (keyup)="secondApplyFilterImport($event)">
+            </mat-form-field></td>
+        </tr></table>
+        <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar filtros</button>
+    </mat-drawer>
+
+    <p>
+        <mat-toolbar color="primary">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Gestiona Tus Pagares</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
+                <mat-icon>login</mat-icon>
+            </button>
+        </mat-toolbar>
+    </p>
+
+    <button mat-mini-fab color="primary" style="position: absolute; right: 25px;" aria-label="Example icon button with a delete icon" (click)="openModal()">
+        <mat-icon>add</mat-icon>
+    </button> 
+
+    <app-pagares-collection class="pagares-collection" [dataSource]="dataSource" (onEdit)="openModal($event)"></app-pagares-collection>
+
+</mat-drawer-container>
