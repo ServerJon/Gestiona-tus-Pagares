@@ -1,20 +1,40 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side" >
-        <h3>Filtros: </h3>
+        <h2>Filtros: </h2>
         <mat-form-field style="width: 250px;">
-            <mat-label>Filtrado por texto</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrado por cliente">
+            <mat-label>Filtrado por Cliente</mat-label>
+            <input matInput (keyup)="applyFilter()" placeholder="Filtrado por cliente" id="textFilter">
         </mat-form-field>
-        <h4>Importe</h4>
+        <br>
+        <mat-form-field style="width: 250px;">
+            <mat-label>Filtrado por Banco</mat-label>
+            <input matInput (keyup)="applyFilter()" placeholder="Filtrado por banco" id="bankFilter">
+        </mat-form-field>
+        <h5>Importe</h5>
         <table class="example-full-width" cellspacing="0"><tr>
             <td><mat-form-field class="example-full-width">
                     <mat-label>Desde</mat-label>
-                <input matInput type="number" (keyup)="firstApplyFilterImport($event)">
+                <input matInput type="number" (keyup)="applyFilter()" id="minImport" min="0">
             </mat-form-field></td>
             <td><mat-form-field class="example-full-width">
                     <mat-label>Hasta</mat-label>
-                <input matInput type="number" (keyup)="secondApplyFilterImport($event)">
+                <input matInput type="number" (keyup)="applyFilter()" id="maxImport" min="0">
             </mat-form-field></td>
+        </tr></table>
+        <h5>Vencimiento</h5>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                    <mat-label>Desde</mat-label>
+                <input matInput (dateInput)="applyFilter()" [matDatepicker]="picker1" id="minDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field></td>
+            <!-- <td><mat-form-field class="example-full-width">
+                    <mat-label>Hasta</mat-label>
+                <input matInput (dateInput)="applyFilter()" [matDatepicker]="picker2" id="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field></td> -->
         </tr></table>
         <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar filtros</button>
     </mat-drawer>
