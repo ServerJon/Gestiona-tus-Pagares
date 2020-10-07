@@ -7,11 +7,31 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #1ea098;
 }
 
 .container {
-    display: flexbox;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     margin: 20px;
+}
+
+.main-image {
+    height: auto;
+    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
 }

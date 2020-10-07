@@ -1,0 +1,51 @@
+<!-- Login view -->
+<div class="container">
+    <!-- Main image -->
+    <img src="../../../assets//images/main_image.jpeg" class="m-10 main-image">
+    <!-- End Main image -->
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+        <!-- Email input -->
+        <mat-form-field appearance="fill" class="w-100 m-b-10">
+            <mat-label>Introducir email</mat-label>
+            <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                required
+            />
+            <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                <span *ngIf="loginForm.controls.email.errors.required">Debe introducir un email.</span>
+                <span *ngIf="loginForm.controls.email.errors.pattern">Debe introducir un email válido.</span>
+            </mat-error>
+        </mat-form-field>
+        <!-- End Email input -->
+        
+        <!-- Password -->
+        <mat-form-field appearance="fill" class="w-100 m-b-10">
+            <mat-label>Introducir password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                <span *ngIf="loginForm.controls.password.errors.required">Debe introducir un password.</span>
+                <span *ngIf="loginForm.controls.password.errors.minLength">Debe tener m&iacute;nimo 6 caracteres.</span>
+            </mat-error>
+        </mat-form-field>
+        <!-- End Password -->
+
+        <!-- Error message info -->
+        <mat-hint *ngIf="errorLogin" style="color: red;">Usuario o contraseña incorrectos.</mat-hint>
+        <!-- End Error message info -->
+        
+        <!-- Submit button -->
+        <button mat-raised-button class="w-100 m-10" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <!-- End Submit button -->
+
+    </form>
+    <!-- End Form -->
+
+</div>
+<!-- End Login view -->
