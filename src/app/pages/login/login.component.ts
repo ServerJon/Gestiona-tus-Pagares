@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
     selector: 'app-login',
@@ -11,20 +14,47 @@ export class LoginComponent implements OnInit {
     /**
      * Variables
      */
-    public email = new FormControl('', [Validators.required, Validators.email]);
+    public loginForm: FormGroup;
+    public emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
     public hide: boolean;
+    public errorLogin: boolean;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
         this.hide  = true;
     }
 
-    ngOnInit() { }
+    public ngOnInit(): void {
 
-    getErrorMessage() {
-        if (this.email.hasError('required')) {
-            return 'You must enter a value';
+        this.errorLogin = false;
+
+        this.loginForm = this.formBuilder.group({
+            email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
+            password: [null, [Validators.required, Validators.minLength(6)]]
+        });
+    }
+
+    /**
+     * Login query
+     */
+    public onSubmit(): void {
+        if (this.loginForm.valid) {
+            this.loginService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).then(
+                (response) => {
+                    console.log('Login correcto', response);
+
+                    this.router.navigate(['/dasboard']);
+                }
+            ).catch(
+                (error) => {
+                    console.error('Error al realizar el login:', error);
+
+                    this.errorLogin = true;
+
+                    setTimeout(() => {
+                        this.errorLogin = false;
+                    }, 5000);
+                }
+            );
         }
-
-        return this.email.hasError('email') ? 'Not a valid email' : '';
     }
 }

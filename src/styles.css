@@ -20,6 +20,8 @@ body {
 .main-image {
     height: auto;
     width: 100%;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 .w-100 {
@@ -28,4 +30,8 @@ body {
 
 .m-10 {
     margin: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
 }
