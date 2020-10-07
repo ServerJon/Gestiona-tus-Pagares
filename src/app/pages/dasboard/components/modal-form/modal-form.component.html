@@ -1,0 +1,106 @@
+<div mat-dialog-title>
+    <h3>{{ data.title }}</h3>
+</div>
+<mat-dialog-content>
+    <div class="container">
+        <form [formGroup]="pagareForm">
+            <!-- Cliente Name input -->
+            <mat-form-field appearance="fill" class="w-100 m-b-10">
+                <mat-label>Cliente</mat-label>
+                <input matInput formControlName="cliente" required>
+                <mat-error *ngIf="pagareForm.controls.cliente.touched && pagareForm.controls.cliente.invalid">
+                    <span *ngIf="pagareForm.controls.cliente.errors.required">Debe introducir un cliente.</span>
+                </mat-error>
+            </mat-form-field>
+            <!-- End Cliente Name input -->
+    
+            <!-- Importe input -->
+            <mat-form-field appearance="fill" class="w-100 m-b-10">
+                <mat-label>Importe</mat-label>
+                <input matInput formControlName="importe" type="number" required>
+                <mat-error *ngIf="pagareForm.controls.importe.touched && pagareForm.controls.importe.invalid">
+                    <span *ngIf="pagareForm.controls.importe.errors.required">Debe introducir un importe.</span>
+                </mat-error>
+            </mat-form-field>
+            <!-- End Importe input -->
+
+            <!-- Vencimiento input -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Vencimiento</mat-label>
+                <input matInput formControlName="vencimiento" [matDatepicker]="picker1" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="pagareForm.controls.vencimiento.touched && pagareForm.controls.vencimiento.invalid">
+                    <span *ngIf="pagareForm.controls.vencimiento.errors.required">Debe introducir un vencimiento.</span>
+                </mat-error>
+            </mat-form-field>
+            <!-- End Vencimiento input -->
+    
+            <!-- Banco Name input -->
+            <mat-form-field appearance="fill" class="w-100 m-b-10">
+                <mat-label>Banco</mat-label>
+                <input matInput formControlName="banco" required>
+                <mat-error *ngIf="pagareForm.controls.banco.touched && pagareForm.controls.banco.invalid">
+                    <span *ngIf="pagareForm.controls.banco.errors.required">Debe introducir un banco.</span>
+                </mat-error>
+            </mat-form-field>
+            <!-- End Banco Name input -->
+    
+            <!-- Concepto input -->
+            <mat-form-field appearance="fill" class="w-100 m-b-10">
+                <mat-label>Concepto</mat-label>
+                <input matInput formControlName="concepto">
+            </mat-form-field>
+            <!-- End Concepto input -->
+
+            <!-- Fecha Entrega input -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Fecha Entrega</mat-label>
+                <input matInput formControlName="fecha_entrega" [matDatepicker]="picker2" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="pagareForm.controls.fecha_entrega.touched && pagareForm.controls.fecha_entrega.invalid">
+                    <span *ngIf="pagareForm.controls.fecha_entrega.errors.required">Debe introducir una fecha de entrega.</span>
+                </mat-error>
+            </mat-form-field>
+            <!-- End Fecha Entrega input -->
+
+            <!-- Error message info -->
+            <mat-hint *ngIf="errorMessage" style="color: red;">{{ message }}</mat-hint>
+            <!-- End Error message info -->
+
+        </form>
+    </div>
+</mat-dialog-content>
+
+<!-- Actions Button -->
+<mat-dialog-actions align="end">
+    <!-- Back Button -->
+    <button mat-mini-fab mat-dialog-close style="background-color: rgb(174, 174, 174);">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <!-- End Back Button -->
+
+    <!-- Create Button -->
+    <button mat-mini-fab [mat-dialog-close]="true" (click)="onSubmit()" [disabled]="!pagareForm.valid" 
+        *ngIf="!data.editOrCreate" style="background-color: green;">
+            <mat-icon>done</mat-icon>
+    </button>
+    <!-- End Create Button -->
+
+    <!-- Edit Button -->
+    <button mat-mini-fab [mat-dialog-close]="true" (click)="onSubmit()" [disabled]="!pagareForm.valid" style="background-color: green;"
+        *ngIf="data.editOrCreate">
+            <mat-icon>edit</mat-icon>
+    </button>
+    <!-- End Edit Button -->
+
+    <!-- Delete Button -->
+    <button mat-mini-fab color="warn" (click)="delete()"
+        *ngIf="data.editOrCreate">
+            <mat-icon>delete</mat-icon>
+    </button> 
+    <!-- End Delete Button -->
+
+</mat-dialog-actions>
+<!-- End Actions Button -->
