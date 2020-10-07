@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
-import { DialogData } from '../interfaces/dasboard.interface';
+import { DialogData } from '../../interfaces/dasboard.interface';
 import { PagareService } from '../../../../shared/services/pagare.service';
 
 @Component({

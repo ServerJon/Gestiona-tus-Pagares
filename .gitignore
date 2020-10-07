@@ -47,3 +47,6 @@ Thumbs.db
 
 # Angular
 /src/environments/environment.firebase.ts
+
+# Electron
+/electron/dist/*
