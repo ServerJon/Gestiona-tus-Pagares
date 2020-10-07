@@ -14,14 +14,15 @@ body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    align-items: center;
     margin: 20px;
 }
 
 .main-image {
     height: auto;
     width: 100%;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 350px;
+    max-height: 350px;
 }
 
 .w-100 {

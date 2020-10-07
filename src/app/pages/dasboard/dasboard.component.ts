@@ -56,6 +56,8 @@ export class DasboardComponent implements OnInit {
             },
             error => {
                 console.error('Error loadPagares() | Dasboard Component: ', error);
+
+                this.router.navigate(['/login']);
             }
         );
     }
