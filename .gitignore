@@ -47,3 +47,8 @@ Thumbs.db
 
 # Angular
 /src/environments/environment.firebase.ts
+
+# Electron
+/electron/dist/*
+/gestiona-tus-pagares-app-darwin-x64/*
+/gestiona-tus-pagares-app-win32-ia32/*

@@ -96,7 +96,7 @@
     <!-- End Edit Button -->
 
     <!-- Delete Button -->
-    <button mat-mini-fab color="warn" (click)="delete()"
+    <button mat-mini-fab color="warn" mat-dialog-close (click)="delete()"
         *ngIf="data.editOrCreate">
             <mat-icon>delete</mat-icon>
     </button> 

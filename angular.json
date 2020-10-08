@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "GestionaTusPagares"
+  "defaultProject": "GestionaTusPagares",
+  "cli": {
+    "analytics": "2ddf311b-3ddf-4a34-9c64-3b5de2f92f5d"
+  }
 }
