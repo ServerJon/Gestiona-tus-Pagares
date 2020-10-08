@@ -25,7 +25,7 @@ export class DasboardComponent implements OnInit {
     private minImport: string;
     private maxImport: string;
     private minDate: string;
-    private maxDate: string;
+    // private maxDate: string;
 
     constructor(
         private loginService: LoginService,

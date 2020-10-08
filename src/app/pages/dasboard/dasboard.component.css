@@ -15,3 +15,14 @@
     font-size: 14px;
     width: 100%;
 }
+
+.closeSidenav {
+    display: none;
+}
+
+@media screen and (max-width: 960px) { 
+    .closeSidenav {
+        display: inline;
+        margin-left: 15px;
+    }
+}
