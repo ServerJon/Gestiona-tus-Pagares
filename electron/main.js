@@ -26,7 +26,7 @@ function createWindow() {
     );
 
     // Open Chrome devTools
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     win.on('closed', () => {
         win = null;

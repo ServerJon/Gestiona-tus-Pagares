@@ -32,4 +32,4 @@ electron-packager ./ electron-classroom --platform=darwin --icon src/favicon.icn
 
 ## Create Electron Desktop App Win
 
-electron-packager ./ electron-classroom --platform=win32 --icon src/favicon.ico
+electron-packager ./ gestiona-tus-pagares-app --platform=win32 --icon src/favicon.ico

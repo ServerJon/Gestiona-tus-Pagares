@@ -2,6 +2,15 @@
   "name": "gestiona-tus-pagares",
   "version": "0.0.0",
   "main": "./electron/main.js",
+  "build": {
+    "appId": "hrnos.lucas.gestionatuspagares",
+    "files": [
+      "dist/GestionaTusPagares/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "electron/main.js"
+    ]
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --port 4201",

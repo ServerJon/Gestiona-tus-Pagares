@@ -50,4 +50,5 @@ Thumbs.db
 
 # Electron
 /electron/dist/*
-/electron-classroom-darwin-x64/*
+/gestiona-tus-pagares-app-darwin-x64/*
+/gestiona-tus-pagares-app-win32-ia32/*
