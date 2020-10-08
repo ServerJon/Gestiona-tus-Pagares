@@ -1,12 +1,12 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side" >
+    <mat-drawer #drawer class="example-sidenav" mode="side">
         <h2>Filtros: </h2>
-        <mat-form-field style="width: 250px;">
+        <mat-form-field >
             <mat-label>Filtrado por Cliente</mat-label>
             <input matInput (keyup)="applyFilter()" placeholder="Filtrado por cliente" id="textFilter">
         </mat-form-field>
         <br>
-        <mat-form-field style="width: 250px;">
+        <mat-form-field >
             <mat-label>Filtrado por Banco</mat-label>
             <input matInput (keyup)="applyFilter()" placeholder="Filtrado por banco" id="bankFilter">
         </mat-form-field>
@@ -37,6 +37,7 @@
             </mat-form-field></td> -->
         </tr></table>
         <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar filtros</button>
+        <button mat-raised-button color="warn" (click)="drawer.toggle()" class="closeSidenav">Cerrar</button>
     </mat-drawer>
 
     <p>

@@ -1,3 +1,37 @@
 table {
     width: 100%;
 }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-table {
+    overflow: auto;
+}
+
+.mobile-label {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+
+    .mat-row { 
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 24px;
+    }
+}
