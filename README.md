@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Create Electron Desktop App iOS
 
-electron-packager ./ electron-classroom --platform=darwin --icon src/favicon.icns
+electron-packager ./ gestiona-tus-pagares-app --platform=darwin --icon src/favicon.icns
 
 ## Create Electron Desktop App Win
 
