@@ -50,3 +50,4 @@ Thumbs.db
 
 # Electron
 /electron/dist/*
+/electron-classroom-darwin-x64/*
