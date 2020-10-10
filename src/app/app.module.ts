@@ -16,6 +16,8 @@ import { DasboardComponent } from './pages/dasboard/dasboard.component';
 import { environmentFirebase } from '../environments/environment.firebase';
 import { PagaresCollectionComponent } from './pages/dasboard/components/pagares-collection/pagares-collection.component';
 import { ModalFormComponent } from './pages/dasboard/components/modal-form/modal-form.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ModalFormComponent } from './pages/dasboard/components/modal-form/modal
     HttpClientModule,
     AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
     AngularFireAuthModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
