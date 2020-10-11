@@ -26,3 +26,19 @@
         margin-left: 15px;
     }
 }
+
+.dasboard {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagares-collection {
+    width: 100%;
+}
+
+.add-icon {
+    align-self: flex-end;
+    margin-right: 20px;
+}

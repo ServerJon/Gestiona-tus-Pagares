@@ -53,10 +53,12 @@
         </mat-toolbar>
     </p>
 
-    <button mat-mini-fab color="primary" style="position: absolute; right: 25px;" aria-label="Example icon button with a delete icon" (click)="openModal()">
-        <mat-icon>add</mat-icon>
-    </button> 
-
-    <app-pagares-collection class="pagares-collection" [dataSource]="dataSource" (onEdit)="openModal($event)"></app-pagares-collection>
+    <div class="dasboard">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openModal()" class="add-icon">
+            <mat-icon>add</mat-icon>
+        </button> 
+    
+        <app-pagares-collection class="pagares-collection" [dataSource]="dataSource" (onEdit)="openModal($event)"></app-pagares-collection>
+    </div>
 
 </mat-drawer-container>
