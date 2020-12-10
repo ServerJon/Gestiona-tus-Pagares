@@ -1,8 +1,8 @@
 {
-  "name": "my-new-app",
-  "productName": "my-new-app",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "name": "gestiona-tus-pagares",
+  "productName": "gestiona-tus-pagares",
+  "version": "0.0.1",
+  "description": "The app version developed only with Electron",
   "main": "dist/index.js",
   "scripts": {
     "start": "tsc && electron-forge start",
@@ -11,7 +11,7 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts ."
   },
-  "keywords": [],
+  "keywords": ["Electron","Desktop","Node.js"],
   "author": {
     "name": "ServerJon",
     "email": "ctsesiphon@hotmail.com"
@@ -24,7 +24,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "my_new_app"
+            "name": "gestiona_tus_pagares"
           }
         },
         {
