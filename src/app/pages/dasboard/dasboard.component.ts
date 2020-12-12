@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../../shared/services/login.service';
 import { PagareService } from '../../shared/services/pagare.service';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
+import { Pagare } from 'src/app/shared/interfaces/pagare';
 
 @Component({
     selector: 'app-dasboard',
@@ -19,7 +20,7 @@ export class DasboardComponent implements OnInit {
      */
     public dataSource: MatTableDataSource<any>;
     public dataSourceTotal: MatTableDataSource<any>;
-    private arrayPagares: Array<any>;
+    private arrayPagares: Array<Pagare>;
     private textFilter: string;
     private bankFilter: string;
     private minImport: string;
@@ -32,6 +33,8 @@ export class DasboardComponent implements OnInit {
         private router: Router,
         private pagareService: PagareService,
         private dialog: MatDialog) {
+            console.log('Dashboard Component');
+
             this.arrayPagares = [];
             this.dataSource = new MatTableDataSource();
             this.dataSourceTotal = new MatTableDataSource();
@@ -47,18 +50,19 @@ export class DasboardComponent implements OnInit {
      * Load all pagares
      */
     private loadPagares(): void {
-        this.pagareService.getPagares().subscribe(
+        this.pagareService.loadPagares().then(
             response => {
                 this.arrayPagares = [...response];
 
                 this.dataSource.data = this.arrayPagares;
                 this.dataSourceTotal.data = response;
-            },
-            error => {
-                console.error('Error loadPagares() | Dasboard Component: ', error);
-
-                this.router.navigate(['/login']);
             }
+        ).catch(
+          (error: Error) => {
+            console.error('Error loadPagares() | Dasboard Component: ', error);
+
+            // this.router.navigate(['/login']);
+          }
         );
     }
 

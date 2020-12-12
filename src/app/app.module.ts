@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // import { AngularFireAuthModule } from '@angular/fire/auth';
 // import { AngularFireModule } from '@angular/fire';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxElectronModule } from 'ngx-electron';
 
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routing';
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
     // AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
     // AngularFireAuthModule,
     MatNativeDateModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgxElectronModule
   ],
   providers: [],
   bootstrap: [AppComponent]
