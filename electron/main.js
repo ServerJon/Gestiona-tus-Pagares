@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron') 
+const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -34,6 +34,12 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
 
 app.on('activate', () => {
     if (win === null) {
