@@ -7,17 +7,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dasboard', pathMatch: 'full' },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent,
+  // },
   {
     path: 'dasboard',
     component: DasboardComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
 
+  { path: '', redirectTo: '/dasboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/dasboard', pathMatch: 'full' },
 ];
 

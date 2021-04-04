@@ -12,6 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { MatSliderModule } from '@angular/material/slider';
         MatSortModule,
         MatDialogModule,
         MatDatepickerModule,
-        MatSliderModule
+        MatSliderModule,
+        MatNativeDateModule
     ],
     exports: [
         MatFormFieldModule,
@@ -40,7 +42,8 @@ import { MatSliderModule } from '@angular/material/slider';
         MatSortModule,
         MatDialogModule,
         MatDatepickerModule,
-        MatSliderModule
+        MatSliderModule,
+        MatNativeDateModule
     ]
 })
 export class MaterialModule { }
