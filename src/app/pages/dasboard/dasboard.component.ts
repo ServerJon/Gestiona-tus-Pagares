@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+// import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // import { LoginService } from '../../shared/services/login.service';
 import { PagareService } from '../../shared/services/pagare.service';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
+import { Pagare } from 'src/app/shared/interfaces/pagare.interface';
+
 
 @Component({
     selector: 'app-dasboard',
@@ -13,13 +17,13 @@ import { ModalFormComponent } from './components/modal-form/modal-form.component
     styleUrls: ['dasboard.component.css']
 })
 
-export class DasboardComponent implements OnInit {
+export class DasboardComponent implements OnInit, OnDestroy {
     /**
      * Variables
      */
     public dataSource: MatTableDataSource<any>;
     public dataSourceTotal: MatTableDataSource<any>;
-    private arrayPagares: Array<any>;
+    private arrayPagares: Pagare[];
     private textFilter: string;
     private bankFilter: string;
     private minImport: string;
@@ -27,9 +31,11 @@ export class DasboardComponent implements OnInit {
     private minDate: string;
     // private maxDate: string;
 
+    private destructor: ReplaySubject<boolean> = new ReplaySubject(1);
+
     constructor(
         // private loginService: LoginService,
-        private router: Router,
+        // private router: Router,
         private pagareService: PagareService,
         private dialog: MatDialog) {
             this.arrayPagares = [];
@@ -47,19 +53,14 @@ export class DasboardComponent implements OnInit {
      * Load all pagares
      */
     private loadPagares(): void {
-        // this.pagareService.getPagares().subscribe(
-        //     response => {
-        //         this.arrayPagares = [...response];
+        this.pagareService.getPagares().pipe(takeUntil(this.destructor)).subscribe(
+            (response: Pagare[]) => {
+                this.arrayPagares = [...response];
 
-        //         this.dataSource.data = this.arrayPagares;
-        //         this.dataSourceTotal.data = response;
-        //     },
-        //     error => {
-        //         console.error('Error loadPagares() | Dasboard Component: ', error);
-
-        //         this.router.navigate(['/login']);
-        //     }
-        // );
+                this.dataSource.data = this.arrayPagares;
+                this.dataSourceTotal.data = response;
+            }
+        );
     }
 
     /**
@@ -108,7 +109,7 @@ export class DasboardComponent implements OnInit {
             const columnCliente = row.cliente;
             const columnBanco = row.banco;
             const columnImporte = row.importe;
-            const columnVencimiento = parseFloat(row.vencimiento.seconds) * 1000;
+            const columnVencimiento = parseFloat(row.vencimiento);
 
             const customFilterCliente = columnCliente.toLowerCase().includes(t);
             const customFilterBanco = columnBanco.toLowerCase().includes(b);
@@ -214,7 +215,7 @@ export class DasboardComponent implements OnInit {
      * Open modal dialog to create or edit a pagare
      * @param pagare Pagare item
      */
-    public openModal(pagare?): void {
+    public openModal(pagare?: Pagare): void {
         let dataToSend = {};
 
         if (pagare) {
@@ -233,5 +234,14 @@ export class DasboardComponent implements OnInit {
         const dialogRef = this.dialog.open(ModalFormComponent, {
             data: dataToSend
         });
+
+        dialogRef.afterClosed().pipe(takeUntil(this.destructor)).subscribe(()=>{
+          this.loadPagares();
+        })
+    }
+
+    async ngOnDestroy() {
+      this.destructor.next(true);
+      this.destructor.complete();
     }
 }

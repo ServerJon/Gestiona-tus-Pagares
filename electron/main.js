@@ -3,6 +3,22 @@ const path = require('path');
 const url = require('url');
 const csv = require('csv-parser');
 const fs = require('fs');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
+const csvPath = path.join(__dirname, './assets/pagares.csv')
+const csvWriter = createCsvWriter({
+  path: csvPath,
+  header: [
+    {id: 'id', title: 'id'},
+    {id: 'cliente', title: 'cliente'},
+    {id: 'importe', title: 'importe'},
+    {id: 'vencimiento', title: 'vencimiento'},
+    {id: 'banco', title: 'banco'},
+    {id: 'concepto', title: 'concepto'},
+    {id: 'fecha_entrega', title: 'fecha_entrega'}
+  ],
+  fieldDelimiter: ';'
+})
 
 let win;
 
@@ -35,8 +51,34 @@ function createWindow() {
     });
 
     ipcMain.on('csv-pipe-start', (event, arg) => {
-      console.log(arg);
-      event.sender.send('csv-pipe', 'Pong');
+
+      let pagares = [];
+
+      fs.createReadStream(csvPath)
+        .pipe(csv({separator: ';'}))
+        .on('data', (row) => {
+          pagares.push(row)
+
+        })
+        .on('error', (error) => {
+          console.log('Error al leer el csv: ', error);
+        })
+        .on('end', () => {
+          console.log("Csv cargado correctamente");
+
+          if (pagares.length > 0) {
+            event.returnValue = {code: true, pagares: pagares};
+          } else {
+            event.returnValue = {code: false, pagares: pagares};
+          }
+        });
+    });
+
+    ipcMain.on('csv-pipe-write', (event, arg) => {
+
+      csvWriter.writeRecords(arg).then(() => {
+        event.returnValue = {code: true, pagares: arg}
+      });
     });
 }
 
