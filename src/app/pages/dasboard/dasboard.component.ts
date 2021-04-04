@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
-import { LoginService } from '../../shared/services/login.service';
+// import { LoginService } from '../../shared/services/login.service';
 import { PagareService } from '../../shared/services/pagare.service';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
 
@@ -28,7 +28,7 @@ export class DasboardComponent implements OnInit {
     // private maxDate: string;
 
     constructor(
-        private loginService: LoginService,
+        // private loginService: LoginService,
         private router: Router,
         private pagareService: PagareService,
         private dialog: MatDialog) {
@@ -47,19 +47,19 @@ export class DasboardComponent implements OnInit {
      * Load all pagares
      */
     private loadPagares(): void {
-        this.pagareService.getPagares().subscribe(
-            response => {
-                this.arrayPagares = [...response];
+        // this.pagareService.getPagares().subscribe(
+        //     response => {
+        //         this.arrayPagares = [...response];
 
-                this.dataSource.data = this.arrayPagares;
-                this.dataSourceTotal.data = response;
-            },
-            error => {
-                console.error('Error loadPagares() | Dasboard Component: ', error);
+        //         this.dataSource.data = this.arrayPagares;
+        //         this.dataSourceTotal.data = response;
+        //     },
+        //     error => {
+        //         console.error('Error loadPagares() | Dasboard Component: ', error);
 
-                this.router.navigate(['/login']);
-            }
-        );
+        //         this.router.navigate(['/login']);
+        //     }
+        // );
     }
 
     /**
@@ -233,16 +233,5 @@ export class DasboardComponent implements OnInit {
         const dialogRef = this.dialog.open(ModalFormComponent, {
             data: dataToSend
         });
-    }
-
-    /**
-     * Logout query
-     */
-    public logout(): void {
-        this.loginService.logout();
-
-        setTimeout(() => {
-            this.router.navigate(['/login']);
-        }, 1000);
     }
 }

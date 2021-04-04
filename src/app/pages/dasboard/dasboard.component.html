@@ -47,17 +47,14 @@
             </button>
             <span>Gestiona Tus Pagares</span>
             <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
-                <mat-icon>login</mat-icon>
-            </button>
         </mat-toolbar>
     </p>
 
     <div class="dasboard">
         <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openModal()" class="add-icon">
             <mat-icon>add</mat-icon>
-        </button> 
-    
+        </button>
+
         <app-pagares-collection class="pagares-collection" [dataSource]="dataSource" (onEdit)="openModal($event)"></app-pagares-collection>
     </div>
 

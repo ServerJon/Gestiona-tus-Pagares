@@ -1,6 +1,8 @@
-const {app, BrowserWindow} = require('electron') 
-const path = require('path')
-const url = require('url')
+const {app, BrowserWindow, ipcMain} = require('electron');
+const path = require('path');
+const url = require('url');
+const csv = require('csv-parser');
+const fs = require('fs');
 
 let win;
 
@@ -30,6 +32,11 @@ function createWindow() {
 
     win.on('closed', () => {
         win = null;
+    });
+
+    ipcMain.on('csv-pipe-start', (event, arg) => {
+      console.log(arg);
+      event.sender.send('csv-pipe', 'Pong');
     });
 }
 

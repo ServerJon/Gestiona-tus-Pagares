@@ -63,18 +63,18 @@ export class ModalFormComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.pagareForm.valid) {
-      if (this.data.editOrCreate) {
-        this.pagareService.updatePagare(this.data.pagare.id, this.pagareForm.value);
-      } else {
-        this.pagareService.createPagare(this.pagareForm.value);
-      }
+      // if (this.data.editOrCreate) {
+      //   this.pagareService.updatePagare(this.data.pagare.id, this.pagareForm.value);
+      // } else {
+      //   this.pagareService.createPagare(this.pagareForm.value);
+      // }
 
       this.pagareForm.reset();
     }
   }
 
   public delete(): void {
-    this.pagareService.deletePagare(this.data.pagare.id);
+    // this.pagareService.deletePagare(this.data.pagare.id);
   }
 
 }

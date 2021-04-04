@@ -1,20 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from './auth.guard';
 
-import { LoginComponent } from './pages/login/login.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'login',
-  //   component: LoginComponent,
-  // },
   {
     path: 'dasboard',
-    component: DasboardComponent,
-    // canActivate: [AuthGuard],
+    component: DasboardComponent
   },
 
   { path: '', redirectTo: '/dasboard', pathMatch: 'full' },

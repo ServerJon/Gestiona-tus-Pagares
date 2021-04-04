@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  // constructor(private swUpdate: SwUpdate) { if (this.swUpdate.isEnabled) {
-  //   this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => { if (confirm(`Existe una nueva versión ¿Actualizar?`)) {
-  //     window.location.reload(); }
-  //   }); }
-  // }
 }

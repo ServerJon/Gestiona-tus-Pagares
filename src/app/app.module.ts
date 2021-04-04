@@ -3,25 +3,19 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
-// import { AngularFireModule } from '@angular/fire';
+import { NgxElectronModule } from 'ngx-electron'
 
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
-// import { LoginComponent } from './pages/login/login.component';
 import { DasboardComponent } from './pages/dasboard/dasboard.component';
-// import { environmentFirebase } from '../environments/environment.firebase';
 import { PagaresCollectionComponent } from './pages/dasboard/components/pagares-collection/pagares-collection.component';
 import { ModalFormComponent } from './pages/dasboard/components/modal-form/modal-form.component';
-// import { ServiceWorkerModule } from '@angular/service-worker';
-// import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginComponent,
     DasboardComponent,
     PagaresCollectionComponent,
     ModalFormComponent
@@ -33,9 +27,7 @@ import { ModalFormComponent } from './pages/dasboard/components/modal-form/modal
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    // AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
-    // AngularFireAuthModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    NgxElectronModule
   ],
   providers: [],
   bootstrap: [AppComponent]
