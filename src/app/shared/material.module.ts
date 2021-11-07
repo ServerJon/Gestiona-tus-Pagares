@@ -14,33 +14,33 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatDialogModule,
-        MatDatepickerModule,
-        MatSliderModule
-    ],
-    exports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatDialogModule,
-        MatDatepickerModule,
-        MatSliderModule
-    ]
+	imports: [
+		MatFormFieldModule,
+		MatInputModule,
+		MatIconModule,
+		MatButtonModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatDialogModule,
+		MatDatepickerModule,
+		MatSliderModule
+	],
+	exports: [
+		MatFormFieldModule,
+		MatInputModule,
+		MatIconModule,
+		MatButtonModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatDialogModule,
+		MatDatepickerModule,
+		MatSliderModule
+	]
 })
-export class MaterialModule { }
+export class MaterialModule {}

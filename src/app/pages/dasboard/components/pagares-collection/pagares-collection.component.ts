@@ -4,31 +4,37 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-pagares-collection',
-  templateUrl: './pagares-collection.component.html',
-  styleUrls: ['./pagares-collection.component.css']
+	selector: 'app-pagares-collection',
+	templateUrl: './pagares-collection.component.html',
+	styleUrls: ['./pagares-collection.component.css']
 })
 export class PagaresCollectionComponent implements AfterViewInit {
-  /**
-   * Variables
-   */
-  @Input() public dataSource: MatTableDataSource<any>;
-  // tslint:disable-next-line: no-output-on-prefix
-  @Output() public onEdit = new EventEmitter<any>();
-  public displayedColumns: string[] = ['cliente', 'importe', 'vencimiento', 'banco', 'concepto', 'fecha_entrega'];
+	/**
+	 * Variables
+	 */
+	@Input() public dataSource: MatTableDataSource<any>;
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() public onEdit = new EventEmitter<any>();
+	public displayedColumns: string[] = [
+		'cliente',
+		'importe',
+		'vencimiento',
+		'banco',
+		'concepto',
+		'fecha_entrega'
+	];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+	constructor() {}
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+	ngAfterViewInit(): void {
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+	}
 
-  public goToPagare(item): void {
-    this.onEdit.emit(item);
-  }
-
+	public goToPagare(item): void {
+		this.onEdit.emit(item);
+	}
 }

@@ -1,64 +1,122 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <h2>Filtros: </h2>
-        <mat-form-field >
-            <mat-label>Filtrado por Cliente</mat-label>
-            <input matInput (keyup)="applyFilter()" placeholder="Filtrado por cliente" id="textFilter">
-        </mat-form-field>
-        <br>
-        <mat-form-field >
-            <mat-label>Filtrado por Banco</mat-label>
-            <input matInput (keyup)="applyFilter()" placeholder="Filtrado por banco" id="bankFilter">
-        </mat-form-field>
-        <h5>Importe</h5>
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field class="example-full-width">
-                    <mat-label>Desde</mat-label>
-                <input matInput type="number" (keyup)="applyFilter()" id="minImport" min="0">
-            </mat-form-field></td>
-            <td><mat-form-field class="example-full-width">
-                    <mat-label>Hasta</mat-label>
-                <input matInput type="number" (keyup)="applyFilter()" id="maxImport" min="0">
-            </mat-form-field></td>
-        </tr></table>
-        <h5>Vencimiento</h5>
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field class="example-full-width">
-                    <mat-label>Desde</mat-label>
-                <input matInput (dateInput)="applyFilter()" [matDatepicker]="picker1" id="minDate">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field></td>
-            <!-- <td><mat-form-field class="example-full-width">
+	<mat-drawer #drawer class="example-sidenav" mode="side">
+		<h2>Filtros:</h2>
+		<mat-form-field>
+			<mat-label>Filtrado por Cliente</mat-label>
+			<input
+				matInput
+				(keyup)="applyFilter()"
+				placeholder="Filtrado por cliente"
+				id="textFilter"
+			/>
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<mat-label>Filtrado por Banco</mat-label>
+			<input
+				matInput
+				(keyup)="applyFilter()"
+				placeholder="Filtrado por banco"
+				id="bankFilter"
+			/>
+		</mat-form-field>
+		<h5>Importe</h5>
+		<table class="example-full-width" cellspacing="0">
+			<tr>
+				<td>
+					<mat-form-field class="example-full-width">
+						<mat-label>Desde</mat-label>
+						<input
+							matInput
+							type="number"
+							(keyup)="applyFilter()"
+							id="minImport"
+							min="0"
+						/>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field class="example-full-width">
+						<mat-label>Hasta</mat-label>
+						<input
+							matInput
+							type="number"
+							(keyup)="applyFilter()"
+							id="maxImport"
+							min="0"
+						/>
+					</mat-form-field>
+				</td>
+			</tr>
+		</table>
+		<h5>Vencimiento</h5>
+		<table class="example-full-width" cellspacing="0">
+			<tr>
+				<td>
+					<mat-form-field class="example-full-width">
+						<mat-label>Desde</mat-label>
+						<input
+							matInput
+							(dateInput)="applyFilter()"
+							[matDatepicker]="picker1"
+							id="minDate"
+						/>
+						<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+						<mat-datepicker #picker1></mat-datepicker>
+					</mat-form-field>
+				</td>
+				<!-- <td><mat-form-field class="example-full-width">
                     <mat-label>Hasta</mat-label>
                 <input matInput (dateInput)="applyFilter()" [matDatepicker]="picker2" id="maxDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field></td> -->
-        </tr></table>
-        <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar filtros</button>
-        <button mat-raised-button color="warn" (click)="drawer.toggle()" class="closeSidenav">Cerrar</button>
-    </mat-drawer>
+			</tr>
+		</table>
+		<button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar filtros</button>
+		<button mat-raised-button color="warn" (click)="drawer.toggle()" class="closeSidenav">
+			Cerrar
+		</button>
+	</mat-drawer>
 
-    <p>
-        <mat-toolbar color="primary">
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>Gestiona Tus Pagares</span>
-            <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
-                <mat-icon>login</mat-icon>
-            </button>
-        </mat-toolbar>
-    </p>
+	<p>
+		<mat-toolbar color="primary">
+			<button
+				mat-icon-button
+				class="example-icon"
+				aria-label="Example icon-button with menu icon"
+				(click)="drawer.toggle()"
+			>
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span>Gestiona Tus Pagares</span>
+			<span class="example-spacer"></span>
+			<button
+				mat-icon-button
+				class="example-icon favorite-icon"
+				aria-label="Example icon-button with heart icon"
+				(click)="logout()"
+			>
+				<mat-icon>login</mat-icon>
+			</button>
+		</mat-toolbar>
+	</p>
 
-    <div class="dasboard">
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openModal()" class="add-icon">
-            <mat-icon>add</mat-icon>
-        </button> 
-    
-        <app-pagares-collection class="pagares-collection" [dataSource]="dataSource" (onEdit)="openModal($event)"></app-pagares-collection>
-    </div>
+	<div class="dasboard">
+		<button
+			mat-mini-fab
+			color="primary"
+			aria-label="Example icon button with a delete icon"
+			(click)="openModal()"
+			class="add-icon"
+		>
+			<mat-icon>add</mat-icon>
+		</button>
 
+		<app-pagares-collection
+			class="pagares-collection"
+			[dataSource]="dataSource"
+			(onEdit)="openModal($event)"
+		></app-pagares-collection>
+	</div>
 </mat-drawer-container>

@@ -1,44 +1,44 @@
 .example-spacer {
-    flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 
 .example-container {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .example-sidenav {
-    padding: 20px;
+	padding: 20px;
 }
 
 .mat-form-field {
-    font-size: 14px;
-    width: 100%;
+	font-size: 14px;
+	width: 100%;
 }
 
 .closeSidenav {
-    display: none;
+	display: none;
 }
 
-@media screen and (max-width: 960px) { 
-    .closeSidenav {
-        display: inline;
-        margin-left: 15px;
-    }
+@media screen and (max-width: 960px) {
+	.closeSidenav {
+		display: inline;
+		margin-left: 15px;
+	}
 }
 
 .dasboard {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .pagares-collection {
-    width: 100%;
+	width: 100%;
 }
 
 .add-icon {
-    align-self: flex-end;
-    margin-right: 20px;
+	align-self: flex-end;
+	margin-right: 20px;
 }
