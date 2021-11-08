@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import {
+	AngularFirestore,
+	AngularFirestoreCollection,
+	DocumentReference
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+// Project files
+import { Pagare } from '../interfaces/dasboard.interface';
 
 @Injectable({
 	providedIn: 'root'
@@ -27,19 +36,19 @@ export class PagareService {
 		);
 	}
 
-	public getPagares() {
+	public getPagares(): Observable<any[]> {
 		return this.pagares;
 	}
 
-	public updatePagare(id: string, pagare: any) {
+	public updatePagare(id: string, pagare: Pagare): Promise<void> {
 		return this.pagaresCollection.doc(id).update(pagare);
 	}
 
-	public deletePagare(id: string) {
+	public deletePagare(id: string): Promise<void> {
 		return this.pagaresCollection.doc(id).delete();
 	}
 
-	public createPagare(pagare: any) {
+	public createPagare(pagare: Pagare): Promise<DocumentReference> {
 		return this.pagaresCollection.add(pagare);
 	}
 }

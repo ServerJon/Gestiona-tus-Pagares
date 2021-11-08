@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User, auth } from 'firebase';
+import { auth, User } from 'firebase';
 import { Observable } from 'rxjs';
 
 /**
@@ -29,7 +29,7 @@ export class LoginService {
 	/**
 	 * Logout of firebase
 	 */
-	public async logout() {
+	public async logout(): Promise<void> {
 		await this.afsAuth.signOut();
 	}
 

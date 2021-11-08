@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { LoginService } from '../../shared/services/login.service';
 
 @Component({
@@ -15,6 +14,7 @@ export class LoginComponent implements OnInit {
 	 */
 	public loginForm: FormGroup;
 	public emailRegx =
+		// eslint-disable-next-line no-useless-escape
 		/^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 	public hide: boolean;
 	public errorLogin: boolean;

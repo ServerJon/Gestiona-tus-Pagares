@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+// Project files
 import { LoginService } from '../../shared/services/login.service';
-import { PagareService } from '../../shared/services/pagare.service';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
+import { Pagare } from './interfaces/dasboard.interface';
+import { PagareService } from './services/pagare.service';
 
 @Component({
 	selector: 'app-dasboard',
@@ -16,9 +17,9 @@ export class DasboardComponent implements OnInit {
 	/**
 	 * Variables
 	 */
-	public dataSource: MatTableDataSource<any>;
-	public dataSourceTotal: MatTableDataSource<any>;
-	private arrayPagares: Array<any>;
+	public dataSource: MatTableDataSource<Pagare>;
+	public dataSourceTotal: MatTableDataSource<Pagare>;
+	private arrayPagares: Array<Pagare>;
 	private textFilter: string;
 	private bankFilter: string;
 	private minImport: string;
@@ -37,7 +38,7 @@ export class DasboardComponent implements OnInit {
 		this.dataSourceTotal = new MatTableDataSource();
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.loadPagares();
 
 		this.dataSource.filterPredicate = this.getFilterPredicate();
@@ -48,7 +49,7 @@ export class DasboardComponent implements OnInit {
 	 */
 	private loadPagares(): void {
 		this.pagareService.getPagares().subscribe(
-			(response) => {
+			(response: Pagare[]) => {
 				this.arrayPagares = [...response];
 
 				this.dataSource.data = this.arrayPagares;
@@ -80,7 +81,6 @@ export class DasboardComponent implements OnInit {
 		this.minDate = minD === null ? '' : minD;
 		// this.maxDate = maxD === null ? '' : maxD;
 
-		// eslint-disable-next-line max-len
 		const filterValue = `${this.textFilter}$${this.minImport}$${this.maxImport}$${this.bankFilter}$${this.minDate}`;
 
 		this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -94,7 +94,7 @@ export class DasboardComponent implements OnInit {
 	 * Custom Filter Predicate
 	 */
 	private getFilterPredicate() {
-		return (row, filters: string) => {
+		return (row: Pagare, filters: string) => {
 			const filterArray = filters.split('$');
 			const t = filterArray[0];
 			const minI = filterArray[1];
@@ -156,13 +156,15 @@ export class DasboardComponent implements OnInit {
 			} else {
 				result = false;
 			}
-		} else if (Number.isNaN(maxD) && Number.isNaN(minD)) {
-			if (vencimiento >= minD && vencimiento <= maxD) {
-				result = true;
-			} else {
-				result = false;
-			}
 		}
+		/* ESLint error, this condition can never happen */
+		// else if (Number.isNaN(maxD) && Number.isNaN(minD)) {
+		// 	if (vencimiento >= minD && vencimiento <= maxD) {
+		// 		result = true;
+		// 	} else {
+		// 		result = false;
+		// 	}
+		// }
 
 		return result;
 	}
@@ -221,7 +223,7 @@ export class DasboardComponent implements OnInit {
 	 * Open modal dialog to create or edit a pagare
 	 * @param pagare Pagare item
 	 */
-	public openModal(pagare?): void {
+	public openModal(pagare?: Pagare): void {
 		let dataToSend = {};
 
 		if (pagare) {
@@ -237,7 +239,7 @@ export class DasboardComponent implements OnInit {
 			};
 		}
 
-		const dialogRef = this.dialog.open(ModalFormComponent, {
+		this.dialog.open(ModalFormComponent, {
 			data: dataToSend
 		});
 	}

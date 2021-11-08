@@ -1,11 +1,11 @@
 export interface _Date {
-	seconds: number;
+	seconds: string;
 }
 
 export interface Pagare {
 	id: string;
 	cliente: string;
-	importe: number;
+	importe: string;
 	vencimiento: _Date;
 	concepto: string;
 	fecha_entrega: _Date;

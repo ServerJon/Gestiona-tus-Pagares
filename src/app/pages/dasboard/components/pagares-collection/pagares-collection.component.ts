@@ -1,7 +1,9 @@
-import { Component, Input, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+// Project files
+import { DialogData, Pagare } from '../../interfaces/dasboard.interface';
 
 @Component({
 	selector: 'app-pagares-collection',
@@ -12,8 +14,8 @@ export class PagaresCollectionComponent implements AfterViewInit {
 	/**
 	 * Variables
 	 */
-	@Input() public dataSource: MatTableDataSource<any>;
-	@Output() public onEdit = new EventEmitter<any>();
+	@Input() public dataSource: MatTableDataSource<DialogData>;
+	@Output() public eventEdit = new EventEmitter<Pagare>();
 	public displayedColumns: string[] = [
 		'cliente',
 		'importe',
@@ -31,7 +33,7 @@ export class PagaresCollectionComponent implements AfterViewInit {
 		this.dataSource.sort = this.sort;
 	}
 
-	public goToPagare(item): void {
-		this.onEdit.emit(item);
+	public goToPagare(item: Pagare): void {
+		this.eventEdit.emit(item);
 	}
 }

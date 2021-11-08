@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-
 import { DialogData } from '../../interfaces/dasboard.interface';
-import { PagareService } from '../../../../shared/services/pagare.service';
+import { PagareService } from '../../services/pagare.service';
 
 @Component({
 	selector: 'app-modal-form',
