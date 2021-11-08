@@ -9,7 +9,9 @@
 				<mat-label>Cliente</mat-label>
 				<input matInput formControlName="cliente" required />
 				<mat-error
-					*ngIf="pagareForm.controls.cliente.touched && pagareForm.controls.cliente.invalid"
+					*ngIf="
+						pagareForm.controls.cliente.touched && pagareForm.controls.cliente.invalid
+					"
 				>
 					<span *ngIf="pagareForm.controls.cliente.errors.required"
 						>Debe introducir un cliente.</span
@@ -23,7 +25,9 @@
 				<mat-label>Importe</mat-label>
 				<input matInput formControlName="importe" type="number" required />
 				<mat-error
-					*ngIf="pagareForm.controls.importe.touched && pagareForm.controls.importe.invalid"
+					*ngIf="
+						pagareForm.controls.importe.touched && pagareForm.controls.importe.invalid
+					"
 				>
 					<span *ngIf="pagareForm.controls.importe.errors.required"
 						>Debe introducir un importe.</span
@@ -39,7 +43,10 @@
 				<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
 				<mat-datepicker #picker1></mat-datepicker>
 				<mat-error
-					*ngIf="pagareForm.controls.vencimiento.touched && pagareForm.controls.vencimiento.invalid"
+					*ngIf="
+						pagareForm.controls.vencimiento.touched &&
+						pagareForm.controls.vencimiento.invalid
+					"
 				>
 					<span *ngIf="pagareForm.controls.vencimiento.errors.required"
 						>Debe introducir un vencimiento.</span
@@ -81,7 +88,10 @@
 				<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
 				<mat-datepicker #picker2></mat-datepicker>
 				<mat-error
-					*ngIf="pagareForm.controls.fecha_entrega.touched && pagareForm.controls.fecha_entrega.invalid"
+					*ngIf="
+						pagareForm.controls.fecha_entrega.touched &&
+						pagareForm.controls.fecha_entrega.invalid
+					"
 				>
 					<span *ngIf="pagareForm.controls.fecha_entrega.errors.required"
 						>Debe introducir una fecha de entrega.</span

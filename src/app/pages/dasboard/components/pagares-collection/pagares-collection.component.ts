@@ -13,7 +13,6 @@ export class PagaresCollectionComponent implements AfterViewInit {
 	 * Variables
 	 */
 	@Input() public dataSource: MatTableDataSource<any>;
-	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() public onEdit = new EventEmitter<any>();
 	public displayedColumns: string[] = [
 		'cliente',
@@ -26,8 +25,6 @@ export class PagaresCollectionComponent implements AfterViewInit {
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
-
-	constructor() {}
 
 	ngAfterViewInit(): void {
 		this.dataSource.paginator = this.paginator;

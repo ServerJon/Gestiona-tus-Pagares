@@ -32,7 +32,9 @@
 						"prefix": "app",
 						"style": "camelCase"
 					}
-				]
+				],
+				"@typescript-eslint/no-floating-promises": ["off"],
+				"@typescript-eslint/unbound-method": ["error", { "ignoreStatic": true }]
 			}
 		},
 		{
