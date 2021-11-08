@@ -1,34 +1,39 @@
-import { Component, Input, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+// Project files
+import { DialogData, Pagare } from '../../interfaces/dasboard.interface';
 
 @Component({
-  selector: 'app-pagares-collection',
-  templateUrl: './pagares-collection.component.html',
-  styleUrls: ['./pagares-collection.component.css']
+	selector: 'app-pagares-collection',
+	templateUrl: './pagares-collection.component.html',
+	styleUrls: ['./pagares-collection.component.css']
 })
 export class PagaresCollectionComponent implements AfterViewInit {
-  /**
-   * Variables
-   */
-  @Input() public dataSource: MatTableDataSource<any>;
-  // tslint:disable-next-line: no-output-on-prefix
-  @Output() public onEdit = new EventEmitter<any>();
-  public displayedColumns: string[] = ['cliente', 'importe', 'vencimiento', 'banco', 'concepto', 'fecha_entrega'];
+	/**
+	 * Variables
+	 */
+	@Input() public dataSource: MatTableDataSource<DialogData>;
+	@Output() public eventEdit = new EventEmitter<Pagare>();
+	public displayedColumns: string[] = [
+		'cliente',
+		'importe',
+		'vencimiento',
+		'banco',
+		'concepto',
+		'fecha_entrega'
+	];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+	ngAfterViewInit(): void {
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+	}
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  public goToPagare(item): void {
-    this.onEdit.emit(item);
-  }
-
+	public goToPagare(item: Pagare): void {
+		this.eventEdit.emit(item);
+	}
 }

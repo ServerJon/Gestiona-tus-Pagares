@@ -20,26 +20,26 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DasboardComponent,
-    PagaresCollectionComponent,
-    ModalFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
-    AngularFireAuthModule,
-    MatNativeDateModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		DasboardComponent,
+		PagaresCollectionComponent,
+		ModalFormComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		ReactiveFormsModule,
+		MaterialModule,
+		HttpClientModule,
+		AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
+		AngularFireAuthModule,
+		MatNativeDateModule,
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
